@@ -22,4 +22,4 @@ router.get('/dic/:word', function(req, res){
     res.send({type: 'DELETE'});
 });
 
-module.exports = routes;
+module.exports = router;

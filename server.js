@@ -1,15 +1,17 @@
 const express = require("express");
 const users = require("./data.js");
 const getemail = require("./getemail.js");
-const router = require("./routes/api");
 const app = express();
 
 //Serve static index.html page 
 app.use(express.static("public"));
 
+//make use of routes (CRUD)
+app.use('/api', require("./routes/api"));
+
 //send GET request to root and return message
 app.get('/', (res, req) => {
-  res.send({request: "GET"});
+  res.send({request: "GET This server.js"});
 })
 //send GET request
 app.get("/getemail", (req, res) => {
