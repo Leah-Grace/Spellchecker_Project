@@ -1,5 +1,5 @@
 function getemail(users, name){
-  console.log("users",users);
+  console.log("users", users);
   const user = users.filter(userObj=>{
     return userObj.name === name;
   });
