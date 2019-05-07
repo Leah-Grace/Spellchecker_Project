@@ -2,9 +2,14 @@ const express = require("express");
 const users = require("./data.js");
 const getemail = require("./getemail.js");
 const app = express();
+const bodyParser = require('body-parser');
 
 //Serve static index.html page 
 app.use(express.static("public"));
+
+//body-Parser to parse data BEFORE route handler
+//Building Middleware
+app.use(bodyParser.json());
 
 //make use of routes (CRUD)
 app.use('/api', require("./routes/api"));

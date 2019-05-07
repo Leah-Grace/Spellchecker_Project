@@ -8,7 +8,10 @@ router.get('/dic', function(req, res){
 
 //post new work to Dictionary
 router.post('/dic', function(req, res){
-    res.send({type: 'POST'});
+    console.log(req.body.rank);
+    res.send({type: 'POST',
+name: req.body.name,
+rank: req.body.rank});
 });
 
 //update word in dictionary
