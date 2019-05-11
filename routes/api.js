@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Ninja = require('../models/ninja');
 
 //Get dictionary
 router.get('/dic', function(req, res){

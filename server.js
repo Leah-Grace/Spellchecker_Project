@@ -1,11 +1,18 @@
 const express = require("express");
 const users = require("./data.js");
 const getemail = require("./getemail.js");
+//set-up express app
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 //Serve static index.html page 
 app.use(express.static("public"));
+
+//connect to mongodb
+mongoose.connect('mongodb://locahhost/spellcheckerProject');
+mongoose.Promise = global.Promise;
+//Net Ninja Rest Api @2:50 mongoose 
 
 //body-Parser to parse data BEFORE route handler
 //Building Middleware
