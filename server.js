@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 app.use(express.static("public"));
 
 //connect to mongodb
-mongoose.connect('mongodb://locahhost/spellcheckerProject');
+mongoose.connect('mongodb://locahhost/spellcheckerProject', { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 //Net Ninja Rest Api @2:50 mongoose 
 
@@ -36,5 +36,6 @@ app.get("/getemail", (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5500;
-app.listen(port, ()=>console.log(`Server listening on port ${port}`));
+const port = process.env.PORT || 8081;
+app.listen(port, ()=>console.log(`Server listening on port ${port}`))
+  .on('err', ()=>console.log(`ERROR ${err}`));
