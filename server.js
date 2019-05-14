@@ -21,6 +21,12 @@ app.use(bodyParser.json());
 //make use of routes (CRUD)
 app.use('/api', require("./routes/api"));
 
+//error handling middleware
+app.use(function(err, req, res, next){
+  console.log(err);
+});
+
+
 //send GET request to root and return message
 app.get('/', (res, req) => {
   res.send({request: "GET This server.js"});
@@ -36,6 +42,8 @@ app.get("/getemail", (req, res) => {
   }
 });
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8083;
 app.listen(port, ()=>console.log(`Server listening on port ${port}`))
   .on('err', ()=>console.log(`ERROR ${err}`));
+
+  //restarting nodemon without changing anything but this comment
