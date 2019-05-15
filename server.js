@@ -21,16 +21,18 @@ app.use(bodyParser.json());
 //make use of routes (CRUD)
 app.use('/api', require("./routes/api"));
 
-//error handling middleware
+//error handling middleware ---> .catch(next) sends you here!!
 app.use(function(err, req, res, next){
   console.log(err);
+  res.send({error: err.message});
 });
 
 
-//send GET request to root and return message
-app.get('/', (res, req) => {
-  res.send({request: "GET This server.js"});
-})
+//send GET request to root and return message  >>>>> No longer in Use, route replaced by app.use(express.static("public"));
+// app.get('/', (res, req) => {
+//   res.send({request: "GET This server.js"});
+// });
+
 //send GET request
 app.get("/getemail", (req, res) => {
   const name = req.query.name;
@@ -42,8 +44,6 @@ app.get("/getemail", (req, res) => {
   }
 });
 
-const port = process.env.PORT || 8083;
+const port = process.env.PORT || 5500;
 app.listen(port, ()=>console.log(`Server listening on port ${port}`))
   .on('err', ()=>console.log(`ERROR ${err}`));
-
-  //restarting nodemon without changing anything but this comment
