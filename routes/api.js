@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Ninja = require('../models/ninja');
 
+
 //Get dictionary
 router.get('/dic', function(req, res, next){
     console.log("Something");
@@ -17,12 +18,13 @@ name: req.body.name,
 rank: req.body.rank});
 });
 
-//post new Ninja to Dictionary
+//post new Ninja to Database
 router.post('/ninjas', function(req, res, next){
      Ninja.create(req.body).then(function(ninja){
          res.send(ninja);
      }).catch(next);
-     console.log("Saving a New Ninja");
+     console.log(req.body);
+     //res.send(req.body);
  });
 
 //update word in dictionary
