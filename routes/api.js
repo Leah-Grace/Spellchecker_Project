@@ -28,6 +28,9 @@ router.post('/ninjas', function(req, res, next){
 
 //update word in dictionary
 router.put('/dic/:word', function(req, res, next){
+    Ninja.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(ninja){
+        res.send(ninja);
+    })
     res.send({type: 'PUT'});
 });
 
