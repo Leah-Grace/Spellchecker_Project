@@ -33,7 +33,11 @@ router.put('/dic/:word', function(req, res, next){
 
 
 //Delete word in dictionary
-router.get('/dic/:word', function(req, res, next){
+router.delete('/dic/:word', function(req, res, next){
+    Ninja.findByIdAndRemove({_id: req.params.id}).then(function(ninja){
+        res.send(ninja);
+    })
+    console.log(req.params.id);
     res.send({type: 'DELETE'});
 });
 
