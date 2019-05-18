@@ -24,7 +24,6 @@ router.post('/ninjas', function(req, res, next){
          res.send(ninja);
      }).catch(next);
      console.log(req.body);
-     //res.send(req.body);
  });
 
 //update word in dictionary

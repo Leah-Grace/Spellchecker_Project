@@ -25,8 +25,8 @@ app.use('/api', require("./routes/api"));
 
 //error handling middleware ---> .catch(next) sends you here!!
 app.use(function(err, req, res, next){
-  console.log(err);
-  res.send({error: err.message});
+  //console.log(err);
+  res.status(422).send({error: err.message});
 });
 
 
