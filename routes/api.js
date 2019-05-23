@@ -4,9 +4,21 @@ const Ninja = require('../models/ninja');
 
 
 //Get dictionary
-router.get('/dic', function(req, res, next){
-    console.log("Something");
-    res.send({type: 'GET'});
+router.get('/ninjas', function(req, res, next){
+    // Ninja.find({}).then(function(ninjas){
+    //    // res.send({ninjas});
+    //     //pass url with log and lat parameters
+    //     //add url parameters to send key/value pairs
+    // });
+    Ninja.aggregate().near({
+        near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
+        maxDistance: 100000, 
+        spherical: true,
+    distanceField:"dist.calculated"
+}).then(function(ninjas){
+        res.send({ninjas});
+    });
+    
 });
 
 //post new Ninja to Dictionary
