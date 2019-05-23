@@ -27,20 +27,21 @@ router.post('/ninjas', function(req, res, next){
  });
 
 //update word in dictionary
-router.put('/dic/:word', function(req, res, next){
-    Ninja.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(ninja){
-        res.send(ninja);
-    })
+router.put('/ninjas/:id', function(req, res, next){
+    Ninja.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+        Ninja.findOne({_id: req.params.id}).then(function(ninja){
+            res.send(ninja);
+        });
+    });
     res.send({type: 'PUT'});
 });
 
 
 //Delete word in dictionary
-router.delete('/dic/:word', function(req, res, next){
+router.delete('/ninjas/:id', function(req, res, next){
     Ninja.findByIdAndRemove({_id: req.params.id}).then(function(ninja){
         res.send(ninja);
-    })
-    console.log(req.params.id);
+    });
     res.send({type: 'DELETE'});
 });
 
