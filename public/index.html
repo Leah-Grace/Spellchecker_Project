@@ -40,6 +40,62 @@
     <p id="userMessage"></p>
 </div>
 
+<div id="ninjas">
+
+</div>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<!--Create React Component-->
+
+<script type ="text/babel">
+var Ninjas = React.createClass({
+    getinitialState: function(){
+        return{{
+            ninjas: []
+        }}
+    }
+    render:function(){
+        var ninjas = this.state.ninjas;
+        ninjas = ninjas.map(function(ninja, index){
+            return(
+                <li key={index}>
+                    <span className={ninja}
+                    
+                    </li>
+
+            )
+        })
+        return(
+            <div id="ninja-container">
+                <form id="search" onSubmit={this.handleSubmit()}>
+                    <label>Enter Your Latitude</label>
+                    <input type="text" ref="lat" placehoilder="latitude" required />
+                    <label>Enter your Longitude</label>
+                   <inout type="test" ref="lng" placeholder="longitude" required />
+                   <inout type="submit" value="Find Ninjas" />
+                </form>
+                <ul></ul>
+            </div>
+        )
+    }
+    handleSubmit: function(e){
+        e.preventDefault();
+        var lng = this.refs.lng.value;
+        var lat = this.refs.lat.value;
+        fetch('/api/ninjas?lng=' = lng + '&lat=' + lat).then(function(data){
+            return data.json();
+        }).then(json => {
+            this.setState({
+                ninjas: json
+            });
+        });
+    };
+});
+
+</script>
+
 </body>
 </html>
 

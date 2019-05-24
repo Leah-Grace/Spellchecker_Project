@@ -17,5 +17,5 @@ function handleClick(){
 //   const newUserMessage = document.getElementById("message").value;
 //   console.log(newUserName, newUserId, newUserMessage);
 
-  fetch("POSTREQROUTE" + newUserName + newUserId + message)
-}
+//   fetch("POSTREQROUTE" + newUserName + newUserId + message)
+// }
