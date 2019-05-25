@@ -55,21 +55,22 @@ var Ninjas = React.createClass({
         return{{
             ninjas: []
         }}
-    }
-    render:function(){
+    },
+    render: function(){
         var ninjas = this.state.ninjas;
         ninjas = ninjas.map(function(ninja, index){
             return(
                 <li key={index}>
-                    <span className={ninja}
-                    
+                    <span className={ninja.obj.available}></span>
+                    <span className="name">(ninja.obj.name)</span>
+                    <span className="rank">{ninja.obj.rank}</span>
+                    <span className="dist">{Math.floor{ninja.dist / 1000}} km</span>
                     </li>
-
-            )
-        })
+            );
+        });
         return(
             <div id="ninja-container">
-                <form id="search" onSubmit={this.handleSubmit()}>
+                <form id="search" onSubmit={this.handleSubmit}>
                     <label>Enter Your Latitude</label>
                     <input type="text" ref="lat" placehoilder="latitude" required />
                     <label>Enter your Longitude</label>
@@ -93,6 +94,9 @@ var Ninjas = React.createClass({
         });
     };
 });
+
+ReactDOM.render{<Ninjas />, document.getElementById("ninjas")
+
 
 </script>
 
