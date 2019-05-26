@@ -52,9 +52,9 @@
 <script type ="text/babel">
 var Ninjas = React.createClass({
     getinitialState: function(){
-        return{{
+        return({
             ninjas: []
-        }}
+        })
     },
     render: function(){
         var ninjas = this.state.ninjas;
@@ -64,7 +64,7 @@ var Ninjas = React.createClass({
                     <span className={ninja.obj.available}></span>
                     <span className="name">(ninja.obj.name)</span>
                     <span className="rank">{ninja.obj.rank}</span>
-                    <span className="dist">{Math.floor{ninja.dist / 1000}} km</span>
+                    <span className="dist">{Math.floor(ninja.dist / 1000)} km</span>
                     </li>
             );
         });
@@ -77,25 +77,26 @@ var Ninjas = React.createClass({
                    <inout type="test" ref="lng" placeholder="longitude" required />
                    <inout type="submit" value="Find Ninjas" />
                 </form>
-                <ul></ul>
+                <ul>{ninja}</ul>
             </div>
-        )
-    }
+        );
+    },
     handleSubmit: function(e){
         e.preventDefault();
         var lng = this.refs.lng.value;
         var lat = this.refs.lat.value;
-        fetch('/api/ninjas?lng=' = lng + '&lat=' + lat).then(function(data){
+        fetch('/api/ninjas?lng=' + lng + '&lat=' + lat)        
+        .then(function(data){
             return data.json();
         }).then(json => {
             this.setState({
                 ninjas: json
             });
         });
-    };
+    },
 });
 
-ReactDOM.render{<Ninjas />, document.getElementById("ninjas")
+ReactDOM.render(<Ninjas />, document.getElementById("ninjas"));
 
 
 </script>
